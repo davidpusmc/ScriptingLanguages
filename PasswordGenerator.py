@@ -4,13 +4,19 @@ import random
 import pyperclip
 
 ##########     Password Generator     ##########
+#pulls strings from string lib and stores in var
 password_chars = string.ascii_letters + string.digits + string.punctuation
-
+###### handles generation of random string as password######
 def password_generator():
+    #######Deletes previously generated pass######
     password_field.delete(0, END)
+    ######Sets predetermined length of password############
     length = 16
+    #######chooses a random character from pass_chars list and joins together until length is reached
     password = "".join([random.choice(password_chars) for _ in range(length)])
+    ######## inserts password string in field starting at pos 0 #######
     password_field.insert(0, password)
+    ###Copies password string to clipboard for ease of use##########
     pyperclip.copy(password)
 
 ##########     User Interface     ##########
